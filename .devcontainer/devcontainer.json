@@ -1,0 +1,45 @@
+{
+  "name": "RFBlinds (ESP32)",
+  "build": {
+    "dockerfile": "Dockerfile"
+  },
+  "remoteUser": "vscode",
+
+  // The ESP32 toolchains are 1-2 GB. Keep them in volumes so they are only
+  // downloaded once, not on every container rebuild.
+  "mounts": [
+    "source=rfblinds-platformio,target=/home/vscode/.platformio,type=volume",
+    "source=rfblinds-arduino15,target=/home/vscode/.arduino15,type=volume",
+    // USB serial adapters, so build.sh upload/monitor can reach the board.
+    "source=/dev,target=/dev,type=bind"
+  ],
+  // Allow ttyUSB* (major 188) and ttyACM* (major 166) without --privileged.
+  "runArgs": [
+    "--device-cgroup-rule=c 188:* rmw",
+    "--device-cgroup-rule=c 166:* rmw"
+  ],
+
+  "containerEnv": {
+    // build.sh would pick arduino-cli because it is installed; PlatformIO is
+    // the default here. Use `src/build.sh -b arduino-cli` for the other one.
+    "RFB_BACKEND": "pio"
+  },
+
+  // Download the ESP32 platform once (cached in the volume afterwards) and
+  // check that the host-side tests pass.
+  "postCreateCommand": "src/build.sh setup && src/test/run_tests.sh",
+
+  "customizations": {
+    "vscode": {
+      "extensions": [
+        "ms-vscode.cpptools",
+        "ms-python.python"
+      ],
+      "settings": {
+        "files.associations": {
+          "*.ino": "cpp"
+        }
+      }
+    }
+  }
+}
