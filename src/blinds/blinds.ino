@@ -1,4 +1,4 @@
-// RFBlinds - ESP32 controller for 433 MHz motorised blinds.
+// esp32-rf-blinds-controller - ESP32 controller for 433 MHz motorised blinds.
 //
 // Replaces the original remote by sending the same RF frames through a cheap
 // 433 MHz transmitter module (FS1000A or similar). Commands can come from:
@@ -232,7 +232,7 @@ void setup() {
   setLed(false);
 #endif
   delay(200);
-  Serial.println("\nRFBlinds ESP32");
+  Serial.println("\nesp32-rf-blinds-controller");
 
   if (!rf.begin(RF_TX_PIN, RF_UNIT_US, RF_GAP_US)) {
     Serial.println("ERROR: could not initialise the RF transmitter");

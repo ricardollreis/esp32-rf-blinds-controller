@@ -1,5 +1,5 @@
 {
-  "name": "RFBlinds (ESP32)",
+  "name": "esp32-rf-blinds-controller",
   "build": {
     "dockerfile": "Dockerfile"
   },

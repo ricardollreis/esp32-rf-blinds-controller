@@ -1,4 +1,4 @@
-# Development container for RFBlinds: ESP32 firmware build (PlatformIO and
+# Development container for esp32-rf-blinds-controller: ESP32 firmware build (PlatformIO and
 # arduino-cli), host-side tests (g++, numpy) and the serial tool (pyserial).
 FROM mcr.microsoft.com/devcontainers/python:1-3.12-bookworm
 

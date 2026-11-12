@@ -1,4 +1,4 @@
-# RFBlinds
+# esp32-rf-blinds-controller
 
 Control 433 MHz motorised blinds from an **ESP32**, with no changes to the
 blinds. The ESP32 sends the same radio frames as the original 4-channel
@@ -13,7 +13,7 @@ The RF protocol was reverse engineered from SDR recordings of the remote.
 See [`rf-analysis/`](rf-analysis/README.md).
 
 ```
-RFBlinds/
+esp32-rf-blinds-controller/
 ├── .devcontainer/              Docker dev environment with all build tools
 ├── src/
 │   ├── blinds/                 ESP32 firmware (Arduino sketch)
@@ -69,7 +69,7 @@ sent. Set `STATUS_LED_PIN` to `-1` if your board has no LED there.
 and flash: PlatformIO, arduino-cli, g++, Python with numpy and pyserial. You
 need Docker and the VS Code **Dev Containers** extension.
 
-1. Open the `RFBlinds` folder in VS Code and run **Dev Containers: Reopen in
+1. Open the `esp32-rf-blinds-controller` folder in VS Code and run **Dev Containers: Reopen in
    Container**.
 2. On first start, the container downloads the ESP32 toolchain into a Docker
    volume, which takes several minutes, then runs the tests. Rebuilding the
